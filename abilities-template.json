@@ -1,0 +1,17 @@
+{
+  "categories": [
+    {
+      "name": "Frontend",
+      "abilities": [
+        { "name": "Framework", "level": 7, "keywords": ["Library", "Tool"] },
+        { "name": "Testing", "level": 5 }
+      ]
+    },
+    {
+      "name": "Backend",
+      "abilities": [
+        { "name": "Language", "level": 6, "keywords": ["Framework", "ORM"] }
+      ]
+    }
+  ]
+}

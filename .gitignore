@@ -8,3 +8,12 @@ companies/*
 
 # Generated PDFs
 gen/
+
+# CV content and photo
+cv.json
+cv-en.json
+img/
+
+# Skills profile content
+abilities.json
+abilities-en.json

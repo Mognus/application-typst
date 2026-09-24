@@ -1,25 +1,37 @@
 #!/usr/bin/env bash
-# Usage: ./build.sh companies/<name>.json [--en]
+# Usage: ./build.sh companies/<name>.json [--en]   cover letter
+#        ./build.sh cv [--en]                       CV
+#        ./build.sh abilities [--en]                skills profile
 set -euo pipefail
 cd "$(dirname "$0")"
 
-job="${1:?Usage: $0 companies/<name>.json [--en]}"
-slug="$(basename "$job" .json)"
+target="${1:?Usage: $0 companies/<name>.json|cv|abilities [--en]}"
 
 lang="de"
-personal="personal-data.json"
-prefix="cover-letter"
+suffix=""
 if [[ "${2:-}" == "--en" ]]; then
   lang="en"
-  personal="personal-data-en.json"
-  prefix="cover-letter-en"
+  suffix="-en"
 fi
 
-out="gen/cover-letter/$prefix-$slug.pdf"
-mkdir -p gen/cover-letter
+if [[ "$target" == "cv" ]]; then
+  source="cv.typ"
+  data=(--input cv="/cv$suffix.json")
+  out="gen/cv/cv$suffix.pdf"
+elif [[ "$target" == "abilities" ]]; then
+  source="ability-sheet.typ"
+  data=(--input abilities="/abilities$suffix.json")
+  out="gen/ability-sheet/ability-sheet$suffix.pdf"
+else
+  source="cover-letter.typ"
+  data=(--input job="/$target")
+  out="gen/cover-letter/cover-letter$suffix-$(basename "$target" .json).pdf"
+fi
+
+mkdir -p "$(dirname "$out")"
 typst compile --root . \
-  --input job="/$job" \
-  --input personal="/$personal" \
+  "${data[@]}" \
+  --input personal="/personal-data$suffix.json" \
   --input lang="$lang" \
-  cover-letter.typ "$out"
+  "$source" "$out"
 echo "OK  $out"

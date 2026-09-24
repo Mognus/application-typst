@@ -1,0 +1,24 @@
+{
+  "summary": [
+    "One line about who you are",
+    "One line about what you are looking for"
+  ],
+  "experience": [
+    {
+      "company": "Company GmbH (City)",
+      "period": "Jan 2024 – today",
+      "role": "Your Role",
+      "highlights": ["What you did", "What you achieved"]
+    }
+  ],
+  "education": [
+    { "period": "2020 – 2023", "school": "School Name", "detail": "Optional detail" }
+  ],
+  "skills": [
+    "Language | Framework | Tool"
+  ],
+  "languages": [
+    "German: Native",
+    "English: Fluent"
+  ]
+}

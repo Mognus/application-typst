@@ -3,8 +3,15 @@
 
 // Right column of the cover letter: date, subject, text and signature.
 
-// Blank lines in the JSON text separate paragraphs.
-#let paragraphs(text) = text.split("\n\n").map(str.trim).join(parbreak())
+// Domains like luxxer23.de or github.com/Mognus. Limited to common endings,
+// so names like Next.js are not mistaken for links.
+#let domain = regex("\b[\w-]+\.(de|com|org|net|io|dev)(/[\w\-./]*[\w/])?")
+
+// Blank lines in the JSON text separate paragraphs; domains become links.
+#let paragraphs(body) = {
+  show domain: it => link("https://" + it.text, it)
+  body.split("\n\n").map(str.trim).join(parbreak())
+}
 
 // Left-aligned, so a wrapped subject is not stretched by justification.
 #let subject(title) = block({

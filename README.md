@@ -1,11 +1,11 @@
-# application-typst
+# typst-application-template
 
 Job application documents with [Typst](https://typst.app). Templates are Typst functions and get filled from JSON files.
 
 ## Structure
 
 ```
-application-typst/
+typst-application-template/
 ├── cover-letter.typ            # entry point: loads JSON, calls the template
 ├── cv.typ                      # entry point
 ├── ability-sheet.typ           # entry point

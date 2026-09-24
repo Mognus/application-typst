@@ -1,6 +1,6 @@
 #import "theme.typ"
 
-#let source = "github.com/Mognus/application-typst"
+#let source = "github.com/Mognus/typst-application-template"
 
 // Page footer: thin rule, name on the left, link to this project on the right.
 #let footer(me) = {

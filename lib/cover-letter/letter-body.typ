@@ -8,8 +8,9 @@
 #let domain = regex("\b[\w-]+\.(de|com|org|net|io|dev)(/[\w\-./]*[\w/])?")
 
 // Blank lines in the JSON text separate paragraphs; domains become links.
+// Links are never hyphenated, a hyphen would look like part of the URL.
 #let paragraphs(body) = {
-  show domain: it => link("https://" + it.text, it)
+  show domain: it => link("https://" + it.text, text(hyphenate: false, it))
   body.split("\n\n").map(str.trim).join(parbreak())
 }
 

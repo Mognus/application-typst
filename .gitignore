@@ -1,0 +1,10 @@
+# Personal data
+personal-data.json
+personal-data-en.json
+
+# Application targets
+companies/*
+!companies/example.json
+
+# Generated PDFs
+gen/
